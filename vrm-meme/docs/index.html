@@ -25,12 +25,16 @@
         #inputVRM {
             margin-bottom: 20px;
             color: white;
-        }
+        }        
 
         .parameterLabel {
             font-weight: bold;
             font-size: large;
             color: white;
+        }
+
+        .resetButton {
+            margin-left: 5px;
         }
 
         .vrmParameter,
@@ -50,7 +54,7 @@
         .sliderRange {
             margin-right: 5px;
         }
-        
+
         #viewer {
             position: absolute;
             overflow: hidden;
@@ -65,7 +69,10 @@
 <body>
     <div id="ui">
         <input type="file" accept=".vrm" id="inputVRM">
-        <div class="parameterLabel">VRM Parameter</div>
+        <div class="parameterLabel">
+            <span>VRM Parameter</span>
+            <button class="resetButton" id="reset">Reset</button>
+        </div>
         <div class="vrmParameter">
             <div class="sliderLabel">
                 <span>Pitch:</span>

@@ -35,6 +35,7 @@ export class Avatar {
         const loader = new GLTFLoader();
         const gltf = await loader.loadAsync(url);
         const vrm = await VRM.from(gltf);
+        // 目線の設定
         this._scene.add(vrm.scene);
         this._vrm = vrm;
 
@@ -50,10 +51,10 @@ export class Avatar {
         this.pitchValue.innerHTML = pitch.toString()
         this.yawValue.innerHTML = yaw.toString()
         this.rollValue.innerHTML = roll.toString()
-        
-        this._vrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.Neck).rotation.x = -1 * (Number(pitch) / 360 * 2 * Math.PI)
-        this._vrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.Neck).rotation.y = -1 * (Number(yaw) / 360 * 2 * Math.PI)
-        this._vrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.Neck).rotation.z = -1 * (Number(roll) / 360 * 2 * Math.PI)
+
+        this._vrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.Head).rotation.x = -1 * (Number(pitch) / 360 * 2 * Math.PI)
+        this._vrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.Head).rotation.y = -1 * (Number(yaw) / 360 * 2 * Math.PI)
+        this._vrm.humanoid.getBoneNode(VRMSchema.HumanoidBoneName.Head).rotation.z = -1 * (Number(roll) / 360 * 2 * Math.PI)
 
         console.log(`Pitch:${pitch}, Yaw:${yaw}, Roll:${roll}`)
     }

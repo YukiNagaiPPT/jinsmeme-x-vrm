@@ -1,6 +1,6 @@
 import { Avatar } from './Avatar';
 import { Viewer } from './Viewer';
-import { VRM, VRMSchema } from '@pixiv/three-vrm';
+import { VRM } from '@pixiv/three-vrm';
 import * as THREE from 'three'
 
 window.addEventListener('DOMContentLoaded', async () => {
@@ -50,6 +50,8 @@ window.addEventListener('DOMContentLoaded', async () => {
     const sliderYaw = <HTMLInputElement>document.getElementById('sliderYaw')
     // 首の傾き(z軸回転)
     const sliderRoll = <HTMLInputElement>document.getElementById('sliderRoll')
+    // 首の傾きのリセットボタン
+    const reset = <HTMLInputElement>document.getElementById('reset')
 
     // 光源の向き(x)
     const sliderX = <HTMLInputElement>document.getElementById('sliderX')
@@ -79,6 +81,10 @@ window.addEventListener('DOMContentLoaded', async () => {
     
     sliderRoll.addEventListener('change', function(event) {
         avatar.onNeckRotateChange(sliderPitch.value, sliderYaw.value,sliderRoll.value)
+    })
+
+    reset.addEventListener('click', function(event) {
+        avatar.onNeckRotateChange('0', '0', '0')
     })
 
     sliderX.addEventListener('change', function(event) {
